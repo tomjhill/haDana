@@ -1,1 +1,40 @@
-
+{
+  "name": "RTL-SDR Server",
+  "version": "1.0.0",
+  "slug": "rtlsdr",
+  "description": "RTL-SDR TCP server for Home Assistant",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "init": false,
+  "devices": ["/dev/bus/usb:/dev/bus/usb:rwm"],
+  "usb": true,
+  "ports": {
+    "1234/tcp": 1234
+  },
+  "ports_description": {
+    "1234/tcp": "RTL-SDR TCP server port"
+  },
+  "options": {
+    "device_index": 0,
+    "gain": 0,
+    "sample_rate": 2048000,
+    "frequency": 0,
+    "ppm_error": 0,
+    "enable_agc": false,
+    "port": 1234,
+    "address": "0.0.0.0"
+  },
+  "schema": {
+    "device_index": "int",
+    "gain": "int",
+    "sample_rate": "int",
+    "frequency": "int",
+    "ppm_error": "int",
+    "enable_agc": "bool",
+    "port": "port",
+    "address": "str"
+  },
+  "panel_icon": "mdi:radio-tower",
+  "panel_title": "RTL-SDR"
+}
