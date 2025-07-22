@@ -1,6 +1,6 @@
 {
   "name": "RTL-SDR Server",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "slug": "rtlsdr",
   "description": "RTL-SDR TCP server for Home Assistant",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
@@ -16,7 +16,7 @@
     "1234/tcp": "RTL-SDR TCP server port"
   },
   "options": {
-    "device_index": 1,
+    "device_index": "",
     "gain": 0,
     "sample_rate": 2048000,
     "frequency": 0,
