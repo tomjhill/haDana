@@ -16,6 +16,7 @@
     "1234/tcp": "RTL-SDR TCP server port"
   },
   "options": {
+    "device_index": 1,
     "gain": 0,
     "sample_rate": 2048000,
     "frequency": 0,
