@@ -28,6 +28,8 @@ options:
   env_vars: []
   allow_origins: []
   pass_environment: true
+  target_url: ""
+  headers: []
   debug: false
 schema:
   mode: "list(stdio_to_sse|sse_server)"
@@ -41,7 +43,7 @@ schema:
   allow_origins: ["str"]
   pass_environment: "bool"
   debug: "bool"
-  target_url: "url?"
+  target_url: "str?"
   headers:
     - key: "str"
       value: "str"
