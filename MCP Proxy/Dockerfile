@@ -1,26 +1,20 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-# Setup base system
-
 ARG BUILD_ARCH=amd64
-RUN apk add –no-cache python3 py3-pip py3-setuptools py3-wheel curl ca-certificates && pip3 install –no-cache-dir –upgrade pip
 
-# Install uv (Python package installer) and mcp-proxy
+RUN apk add –no-cache python3 py3-pip py3-setuptools py3-wheel curl ca-certificates
 
-RUN pip3 install –no-cache-dir uv   
-&& uv tool install –python python3 mcp-proxy
+RUN pip3 install –no-cache-dir –upgrade pip
 
-# Ensure uv tools are in PATH
+RUN pip3 install –no-cache-dir uv
+
+RUN uv tool install –python python3 mcp-proxy
 
 ENV PATH=”/root/.local/bin:$PATH”
 
-# Copy run script
-
 COPY run.sh /
 RUN chmod a+x /run.sh
-
-# Labels
 
 LABEL   
 io.hass.name=“MCP Proxy”   
