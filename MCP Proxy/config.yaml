@@ -1,0 +1,48 @@
+name: "MCP Proxy"
+version: "1.0.0"
+slug: mcp_proxy
+description: "Connect to MCP servers that run on SSE transport, or expose stdio servers as an SSE server using the MCP Proxy server"
+url: "https://github.com/sparfenyuk/mcp-proxy"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: application
+boot: manual
+init: false
+map:
+  - "config:rw"
+ports:
+  8080/tcp: 8080
+ports_description:
+  8080/tcp: "MCP Proxy SSE Server Port"
+webui: "http://[HOST]:[PORT:8080]"
+options:
+  mode: "sse_server"
+  sse_port: 8080
+  sse_host: "0.0.0.0"
+  command: "echo"
+  args: ["Hello from MCP Proxy"]
+  env_vars: []
+  allow_origins: []
+  pass_environment: true
+  debug: false
+schema:
+  mode: "list(stdio_to_sse|sse_server)"
+  sse_port: "port"
+  sse_host: "str"
+  command: "str"
+  args: ["str"]
+  env_vars: 
+    - key: "str"
+      value: "str"
+  allow_origins: ["str"]
+  pass_environment: "bool"
+  debug: "bool"
+  target_url: "url?"
+  headers:
+    - key: "str"
+      value: "str"
+image: "ghcr.io/{arch}-addon-mcp-proxy"
