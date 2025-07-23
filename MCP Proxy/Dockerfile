@@ -1,15 +1,10 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.19
+ARG BUILD_FROM
 FROM $BUILD_FROM
-
-# Set shell
-
-SHELL [”/bin/bash”, “-o”, “pipefail”, “-c”]
 
 # Setup base system
 
 ARG BUILD_ARCH=amd64
-RUN   
-apk add –no-cache   
+RUN apk add –no-cache   
 python3   
 py3-pip   
 py3-setuptools   
@@ -18,13 +13,10 @@ curl
 ca-certificates   
 && pip3 install –no-cache-dir –upgrade pip
 
-# Install uv (Python package installer)
+# Install uv (Python package installer) and mcp-proxy
 
-RUN pip3 install –no-cache-dir uv
-
-# Install mcp-proxy
-
-RUN uv tool install –python python3 mcp-proxy
+RUN pip3 install –no-cache-dir uv   
+&& uv tool install –python python3 mcp-proxy
 
 # Ensure uv tools are in PATH
 
@@ -51,9 +43,6 @@ org.opencontainers.image.authors=“Home Assistant Community Add-ons”
 org.opencontainers.image.licenses=“MIT”   
 org.opencontainers.image.url=“https://addons.community”   
 org.opencontainers.image.source=“https://github.com/your-username/hassio-addons”   
-org.opencontainers.image.documentation=“https://github.com/your-username/hassio-addons/blob/main/mcp-proxy/README.md”   
-org.opencontainers.image.created=${BUILD_DATE}   
-org.opencontainers.image.revision=${VCS_REF}   
-org.opencontainers.image.version=${VERSION}
+org.opencontainers.image.documentation=“https://github.com/your-username/hassio-addons/blob/main/mcp-proxy/README.md”
 
 CMD [ “/run.sh” ]
