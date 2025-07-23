@@ -4,7 +4,7 @@ USER root
 
 RUN apk add --no-cache bash curl jq
 
-COPY run.sh /
-RUN chmod +x /run.sh
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
 
-CMD [ "/run.sh" ]
+ENTRYPOINT ["/usr/local/bin/run.sh"]
