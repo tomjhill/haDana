@@ -45,4 +45,4 @@ schema:
   headers:
     - key: "str"
       value: "str"
-image: "ghcr.io/{arch}-addon-mcp-proxy"
+
