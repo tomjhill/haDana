@@ -4,14 +4,7 @@ FROM $BUILD_FROM
 # Setup base system
 
 ARG BUILD_ARCH=amd64
-RUN apk add –no-cache   
-python3   
-py3-pip   
-py3-setuptools   
-py3-wheel   
-curl   
-ca-certificates   
-&& pip3 install –no-cache-dir –upgrade pip
+RUN apk add –no-cache python3 py3-pip py3-setuptools py3-wheel curl ca-certificates && pip3 install –no-cache-dir –upgrade pip
 
 # Install uv (Python package installer) and mcp-proxy
 
