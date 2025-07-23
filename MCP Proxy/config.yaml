@@ -1,5 +1,5 @@
 name: "MCP Proxy"
-version: "1.0.4"
+version: "1.0.5"
 slug: mcp_proxy
 description: "Connect to MCP servers that run on SSE transport, or expose stdio servers as an SSE server using the MCP Proxy server"
 url: "https://github.com/sparfenyuk/mcp-proxy"
