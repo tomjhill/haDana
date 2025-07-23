@@ -1,4 +1,4 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=ghcr.io/home-assistant/aarch64-base:3.19
 FROM $BUILD_FROM
 
 # Set shell
@@ -15,7 +15,8 @@ py3-pip
 py3-setuptools   
 py3-wheel   
 curl   
-ca-certificates
+ca-certificates   
+&& pip3 install –no-cache-dir –upgrade pip
 
 # Install uv (Python package installer)
 
