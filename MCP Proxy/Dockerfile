@@ -1,14 +1,17 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM ghcr.io/sparfenyuk/mcp-proxy:latest
 
-RUN apk add --no-cache python3 py3-pip py3-venv coreutils bash curl
+USER root
 
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+RUN apk add –no-cache bash curl jq
 
-RUN pip install --no-cache-dir mcp-proxy
+RUN curl -J -L -o /tmp/bashio.tar.gz “https://github.com/hassio-addons/bashio/archive/v0.16.2.tar.gz” &&   
+mkdir /tmp/bashio &&   
+tar zxvf /tmp/bashio.tar.gz –strip 1 -C /tmp/bashio &&   
+mv /tmp/bashio/lib /usr/lib/bashio &&   
+ln -s /usr/lib/bashio/bashio /usr/bin/bashio &&   
+rm -rf /tmp/bashio /tmp/bashio.tar.gz
 
 COPY run.sh /
-RUN chmod a+x /run.sh
+RUN chmod +x /run.sh
 
-CMD [ "/run.sh" ]
+CMD [ “/run.sh” ]
